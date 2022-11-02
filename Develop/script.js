@@ -28,6 +28,21 @@ function getRandomlower() {
 function getRandomupper() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);  
 }
+
+//generates a random number between 0 and 1 then multiples by 10 then rounds down and finally adds 48 to access numbers
+
+function getRandomnumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);  
+}
+ //Generates random symbol by selecting a number between 0-1 multiples by number of symbols  then rounds down giving a postion value of a symbol to generate. 
+function getRandomsymbol() {
+  const symbols = '!"#$%&<><],.-_=^@?';
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
 console.log(getRandomlower());
 
 console.log(getRandomupper());
+
+console.log(getRandomnumber());
+
+console.log(getRandomsymbol());
