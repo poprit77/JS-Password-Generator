@@ -1,5 +1,5 @@
 
-//Creates resultsfor HTMl to grab
+// // Creates resultsfor HTMl to grab
 // const GeneratedPasswordEL = document.getElementById('Generated Password');
 // const lengthEL = document.getElementById('length');
 // const uppercaseEL = document.getElementById('uppercase');
@@ -8,7 +8,13 @@
 // const generateEL = document.getElementById('generate');
 // const clipboardEL = document.getElementById('clipboard');
 
-//Psssword generator function
+
+// //Prompt
+
+// function GivePrompts() {
+
+// }
+// //Psssword generator function
 // const randomFunc = {
 //   lower: getRandomlower,
 //   upper: getRandomnumber,
@@ -19,6 +25,8 @@
 // // listens for click and runs function to grab length and values of check boxes
 // //+ sign turns length into number
 // //passes to generate password function
+
+// //change to submit link to button 
 // generate.addEventListener('click', () => {
 //   const length = +lengthEL.value;
 //   const hasLower = lowercaseEL.checked;
@@ -30,7 +38,7 @@
 // });
 
 // // copy to span
-
+// //potentially add else if
 // clipboardEL.addEventListener('click', () =>{
 //   const textarea = document.createElement('textarea');
 //   const password = GeneratedPasswordEL.innerText;
@@ -42,11 +50,13 @@
 //   textarea.value = password;
 //   document.body.appendChild(textarea);
 //   textarea.select();
+//   //find replacement for execcommand
 //   document.execCommand('copy');
 //   textarea.remove();
 //   alert('password copied to text!');
 // });
-// //
+// //validating selecttor info and returning final password
+// //potentially excess code
 // function generatePassword(lower, upper, number, symbols, length) {
 
 //   let generatePassword = '';
@@ -72,6 +82,21 @@
 
 //   return finalPassword;
 // }
+
+//length prompt
+function GivePrompts() {
+  var length;
+  inputL = prompt("Enter a value between 8-128");
+  if (length == null || length == "") {
+    text = "Enter a value between 8-128";
+  } else {
+    length = " you have chosen " + inputL + "charcters";
+
+  }
+  
+}
+var inputL;
+console.log(inputL)
 
 //generates a  random number between 0 and 1 then multiples by 26 then rounds down and finally adds 97 to access lower case letters
 function getRandomlower() {
