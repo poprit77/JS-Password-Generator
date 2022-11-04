@@ -1,38 +1,38 @@
 
-// Creates resultsfor HTMl to grab
-const GeneratedPasswordEL = document.getElementById('Generated Password');
-const lengthEL = document.getElementById('length');
-const uppercaseEL = document.getElementById('uppercase');
-const lowercasetEL = document.getElementById('lowercaset');
-const symbolstEL = document.getElementById('symbolst');
-const generateEL = document.getElementById('generate');
-const clipboardEL = document.getElementById('clipboard');
+// // Creates resultsfor HTMl to grab
+// const GeneratedPasswordEL = document.getElementById('Generated Password');
+// const lengthEL = document.getElementById('length');
+// const uppercaseEL = document.getElementById('uppercase');
+// const lowercasetEL = document.getElementById('lowercaset');
+// const symbolstEL = document.getElementById('symbolst');
+// const generateEL = document.getElementById('generate');
+// const clipboardEL = document.getElementById('clipboard');
 
 
-//Psssword generator function
-const randomFunc = {
-  lower: getRandomlower,
-  upper: getRandomnumber,
-  number: getRandomnumber,
-  symbol: getRandomsymbol,
-}
+// //Psssword generator function
+// const randomFunc = {
+//   lower: getRandomlower,
+//   upper: getRandomnumber,
+//   number: getRandomnumber,
+//   symbol: getRandomsymbol,
+// }
 
-// listens for click and runs function to grab length and values of check boxes
-//+ sign turns length into number
-//passes to generate password function
+// // listens for click and runs function to grab length and values of check boxes
+// //+ sign turns length into number
+// //passes to generate password function
 
-//change to submit link to button 
-generate.addEventListener('click', () => {
-  const length = +lengthEL.value;
-  const hasLower = lowercaseEL.checked;
-  const hasUpper = uppercaseEL.checked;
-  const hasnumber = numberEL.checked;
-  const hassymbol = symbolsEL.checked;
+// //change to submit link to button 
+// generate.addEventListener('click', () => {
+//   const length = +lengthEL.value;
+//   const hasLower = lowercaseEL.checked;
+//   const hasUpper = uppercaseEL.checked;
+//   const hasnumber = numberEL.checked;
+//   const hassymbol = symbolsEL.checked;
 
-  GeneratedPasswordEL.innerText = generatePassword(hasLower, hasnumber, hasUpper, hassymbol.length);
-});
+//   GeneratedPasswordEL.innerText = generatePassword(hasLower, hasnumber, hasUpper, hassymbol.length);
+// });
 
-// clipboardEL.addEventListener('click', () =>{
+// clipboardEL.addEventListener('click', () => {
 //   const textarea = document.createElement('textarea');
 //   const password = GeneratedPasswordEL.innerText;
 
@@ -48,60 +48,104 @@ generate.addEventListener('click', () => {
 //   textarea.remove();
 //   alert('password copied to text!');
 // });
-//validating selecttor info and returning final password
-//potentially excess code
-function generatePassword(lower, upper, number, symbols, length) {
+// // validating selecttor info and returning final password
+// potentially excess code
+// function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
 
-  let generatePassword = '';
+//   let generatePassword = '';
 
-  const typesCount = lower + upper + number + symbols;
+//   const typesCount = Lowercase + uppercase + numerical + symbol;
 
-  const typesArr = [{ lower }, { upper }, { number }, { symbols }].filter
-    (
-      item => Object.values(item)[0]
-    );
-  if (typesCount === 0) {
-    return '';
-  }
-  for (let i = 0; i < length; i += typesCount) {
-    typesArr.forEach(type => {
-      const funcName = Object.keys(type)[0];
+//   const typesArr = [{ Lowercase }, { uppercase }, { numerical }, { symbol }].filter
+//     (
+//       item => Object.values(item)[0]
+//     );
+//   if (typesCount === 0) {
+//     return '';
+//   }
+//   for (let i = 0; i < inputL; i += typesCount) {
+//     typesArr.forEach(type => {
+//       const funcName = Object.keys(type)[0];
 
-      generatePassword += randomFunc[funcName]();
-    });
-  }
+//       generatePassword += randomFunc[funcName]();
+//     });
+//   }
 
-  const finalPassword = generatedPassword.slice(0, length);
+//   const finalPassword = generatedPassword.slice(0, inputL);
 
-  return finalPassword;
+//   return finalPassword;
+// }
+
+
+
+var password = {
+  inputL: 8,
+  Lowercase: true,
+  uppercase: true,
+  symbol: true,
+  numerical: true,
+  finalPassword: "password"
 }
 
-//length prompt
-function GivePrompts() {
-  var length;
-  inputL = prompt("Enter a value between 8-128");
-  if (length == null || length == "") {
-    text = "Enter a value between 8-128";
-  } else {
-    length = " you have chosen " + inputL + "charcters";
-    confirm("Turn on uppercase variable?");
-
-  }
-
-}
+var finalPassword;
 var inputL;
-console.log(inputL)
 
-//Confirm for 4 variables
-function CV(){
-var Lowercase = confirm("Turn on uppercase variable?");
-if (Lowercase == true) {
-  document.body.style.background = "00ff00";
+function GivePrompts() {
+  var L1;
+  password.inputL = prompt("Enter a value between 8-128");
+  if (inputL > 8 && inputL < 128){
+    return inputL;
+  } else{
+    alert("please enter a value between 8-128")
+  }
+  {
+    password.Lowercase = confirm("Use lowercase variable?");
+
+    password.uppercase = confirm("Use uppercase variable?");
+
+    password.symbol = confirm("Use symbol variable?");
+
+    password.numerical = confirm("Use numerical variable?");
+
+    Lowercase = getRandomlower,
+      uppercase = getRandomnumber,
+      numerical = getRandomnumber,
+      symbol = getRandomsymbol,
+      console.log(password.inputL);
+    console.log(password.Lowercase);
+    console.log(password.uppercase);
+    console.log(password.numerical);
+    console.log(password.symbol);
+
+    console.log(Lowercase());
+    console.log(uppercase());
+    console.log(numerical());
+    console.log(symbol());
+
+  }
+  function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
+    let generatePassword = '';
+    const typesCount = Lowercase + uppercase + numerical + symbol;
+    const typesArr = [{ Lowercase }, { uppercase }, { numerical }, { symbol }].filter
+      (
+        item => Object.values(item)[0]
+      );
+    if (typesCount === 0) {
+      return '';
+    }
+    for (let i = 0; i < inputL; i += typesCount) {
+      typesArr.forEach(type => {
+        const funcName = Object.keys(type)[0];
+        generatePassword += randomFunc[funcName]();
+      });
+    }
+    const finalPassword = generatedPassword.slice(0, inputL);
+    return finalPassword;
+  }
+  console.log(generatePassword());
 }
-else {
-  document.body.style.background = "B22222";
-}
-}
+
+
 
 //generates a  random number between 0 and 1 then multiples by 26 then rounds down and finally adds 97 to access lower case letters
 function getRandomlower() {
@@ -124,8 +168,8 @@ function getRandomsymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-console.log(getRandomlower());
+// console.log(getRandomlower());
 
-console.log(getRandomupper());
-console.log(getRandomnumber());
-console.log(getRandomsymbol());
+// console.log(getRandomupper());
+// console.log(getRandomnumber());
+// console.log(getRandomsymbol());
