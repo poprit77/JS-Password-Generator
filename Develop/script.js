@@ -2,7 +2,7 @@
 
 const randomFunc = {
   Lowercase: getRandomlower,
-  uppercase: getRandomnumber,
+  uppercase: getRandomupper,
   numerical: getRandomnumber,
   symbol: getRandomsymbol,
 }
@@ -45,17 +45,17 @@ function GivePrompts() {
     password.numerical = confirm("Use numerical variable?");
 
     Lowercase = getRandomlower,
-      uppercase = getRandomnumber,
+      uppercase = getRandomupper,
       numerical = getRandomnumber,
       symbol = getRandomsymbol,
       //   console.log(password.inputL);
       // console.log(password.Lowercase);
-      // console.log(password.uppercase);
+      console.log(password.uppercase);
       // console.log(password.numerical);
       // console.log(password.symbol);
 
       // console.log(Lowercase());
-      // console.log(uppercase());
+      console.log(uppercase());
       // console.log(numerical());
       // console.log(symbol());
 
@@ -89,13 +89,11 @@ function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
   // console.log(password.inputL)
   // console.log(generatePassword)
   const finalPassword = generatedPassword.slice(0, password.inputL);
-  console.log({ finalPassword })
+  window.alert(finalPassword);
   return finalPassword;
-
 }
-const textarea = document.getElementById("Your Secure Password");
-finalPassword.innerHTML = "finalPassword";
 
+// document.getElementById("Your Secure Password").innerHTML = finalPassword;
 
 //generates a  random number between 0 and 1 then multiples by 26 then rounds down and finally adds 97 to access lower case letters
 function getRandomlower() {
