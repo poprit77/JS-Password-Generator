@@ -1,82 +1,11 @@
 
-// // Creates resultsfor HTMl to grab
-// const GeneratedPasswordEL = document.getElementById('Generated Password');
-// const lengthEL = document.getElementById('length');
-// const uppercaseEL = document.getElementById('uppercase');
-// const lowercasetEL = document.getElementById('lowercaset');
-// const symbolstEL = document.getElementById('symbolst');
-// const generateEL = document.getElementById('generate');
-// const clipboardEL = document.getElementById('clipboard');
 
-
-// //Psssword generator function
-// const randomFunc = {
-//   lower: getRandomlower,
-//   upper: getRandomnumber,
-//   number: getRandomnumber,
-//   symbol: getRandomsymbol,
-// }
-
-// // listens for click and runs function to grab length and values of check boxes
-// //+ sign turns length into number
-// //passes to generate password function
-
-// //change to submit link to button 
-// generate.addEventListener('click', () => {
-//   const length = +lengthEL.value;
-//   const hasLower = lowercaseEL.checked;
-//   const hasUpper = uppercaseEL.checked;
-//   const hasnumber = numberEL.checked;
-//   const hassymbol = symbolsEL.checked;
-
-//   GeneratedPasswordEL.innerText = generatePassword(hasLower, hasnumber, hasUpper, hassymbol.length);
-// });
-
-// clipboardEL.addEventListener('click', () => {
-//   const textarea = document.createElement('textarea');
-//   const password = GeneratedPasswordEL.innerText;
-
-//   if (!password) {
-//     return;
-//   }
-
-//   textarea.value = password;
-//   document.body.appendChild(textarea);
-//   textarea.select();
-//   //find replacement for execcommand
-//   document.execCommand('copy');
-//   textarea.remove();
-//   alert('password copied to text!');
-// });
-// // validating selecttor info and returning final password
-// potentially excess code
-// function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
-
-//   let generatePassword = '';
-
-//   const typesCount = Lowercase + uppercase + numerical + symbol;
-
-//   const typesArr = [{ Lowercase }, { uppercase }, { numerical }, { symbol }].filter
-//     (
-//       item => Object.values(item)[0]
-//     );
-//   if (typesCount === 0) {
-//     return '';
-//   }
-//   for (let i = 0; i < inputL; i += typesCount) {
-//     typesArr.forEach(type => {
-//       const funcName = Object.keys(type)[0];
-
-//       generatePassword += randomFunc[funcName]();
-//     });
-//   }
-
-//   const finalPassword = generatedPassword.slice(0, inputL);
-
-//   return finalPassword;
-// }
-
-
+const randomFunc = {
+  Lowercase: getRandomlower,
+  uppercase: getRandomnumber,
+  numerical: getRandomnumber,
+  symbol: getRandomsymbol,
+}
 
 var password = {
   inputL: 8,
@@ -84,7 +13,9 @@ var password = {
   uppercase: true,
   symbol: true,
   numerical: true,
-  finalPassword: "password"
+  finalPassword: "password",
+  generatePassword: '',
+  generatedPassword: ""
 }
 
 var finalPassword;
@@ -92,13 +23,19 @@ var inputL;
 
 function GivePrompts() {
   var L1;
-  password.inputL = prompt("Enter a value between 8-128");
-  if (inputL > 8 && inputL < 128){
-    return inputL;
-  } else{
-    alert("please enter a value between 8-128")
-  }
-  {
+  password.inputL = prompt("Enter a value between 8-128")
+  while (password.inputL < 8 || password.inputL > 128 || isNaN(password.inputL)) {
+    if (isNaN(password.inputL)) {
+      alert("this is NAN");
+      password.inputL = prompt("Enter a value between 8-128")
+    } else if (password.inputL < 8 || password.inputL > 128) {
+      alert("please enter a value between 8-128");
+      password.inputL = prompt("Enter a value between 8-128")
+    }
+    else {
+      return
+    }
+  } {
     password.Lowercase = confirm("Use lowercase variable?");
 
     password.uppercase = confirm("Use uppercase variable?");
@@ -111,40 +48,53 @@ function GivePrompts() {
       uppercase = getRandomnumber,
       numerical = getRandomnumber,
       symbol = getRandomsymbol,
-      console.log(password.inputL);
-    console.log(password.Lowercase);
-    console.log(password.uppercase);
-    console.log(password.numerical);
-    console.log(password.symbol);
+      //   console.log(password.inputL);
+      // console.log(password.Lowercase);
+      // console.log(password.uppercase);
+      // console.log(password.numerical);
+      // console.log(password.symbol);
 
-    console.log(Lowercase());
-    console.log(uppercase());
-    console.log(numerical());
-    console.log(symbol());
+      // console.log(Lowercase());
+      // console.log(uppercase());
+      // console.log(numerical());
+      // console.log(symbol());
 
+
+      generatePassword(password.Lowercase, password.uppercase, password.numerical, password.symbol, password.inputL);
   }
-  function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
-    let generatePassword = '';
-    const typesCount = Lowercase + uppercase + numerical + symbol;
-    const typesArr = [{ Lowercase }, { uppercase }, { numerical }, { symbol }].filter
-      (
-        item => Object.values(item)[0]
-      );
-    if (typesCount === 0) {
-      return '';
-    }
-    for (let i = 0; i < inputL; i += typesCount) {
-      typesArr.forEach(type => {
-        const funcName = Object.keys(type)[0];
-        generatePassword += randomFunc[funcName]();
-      });
-    }
-    const finalPassword = generatedPassword.slice(0, inputL);
-    return finalPassword;
-  }
-  console.log(generatePassword());
 }
+function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
+  // console.log(Lowercase)
+  // console.log(password.Lowercase)
+  let generatePassword = '';
+  let generatedPassword = '';
+  const typesCount = password.Lowercase + password.uppercase + password.numerical + password.symbol;
+  const typesArr = [{ Lowercase }, { uppercase }, { numerical }, { symbol }].filter
+    (
+      item => Object.values(item)[0]
+    );
+  if (typesCount === 0) {
+    return '';
+  }
 
+  for (let i = 0; i < inputL; i += typesCount) {
+    typesArr.forEach(type => {
+      const funcName = Object.keys(type)[0];
+      // console.log(type)
+      // console.log(funcName)
+      generatedPassword += randomFunc[funcName]();
+    });
+  }
+  // console.log(inputL)
+  // console.log(password.inputL)
+  // console.log(generatePassword)
+  const finalPassword = generatedPassword.slice(0, password.inputL);
+  console.log({ finalPassword })
+  return finalPassword;
+
+}
+const textarea = document.getElementById("Your Secure Password");
+finalPassword.innerHTML = "finalPassword";
 
 
 //generates a  random number between 0 and 1 then multiples by 26 then rounds down and finally adds 97 to access lower case letters
