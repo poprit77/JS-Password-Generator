@@ -1,12 +1,12 @@
 
-
+//Assigns variables to confirms
 const randomFunc = {
   Lowercase: getRandomlower,
   uppercase: getRandomupper,
   numerical: getRandomnumber,
   symbol: getRandomsymbol,
 }
-
+//Assigns base variable to all variables
 var password = {
   inputL: 8,
   Lowercase: true,
@@ -20,6 +20,7 @@ var password = {
 
 var finalPassword;
 var inputL;
+//opens upon clicking genrerate password. runs through prompts for length and confirms for variables
 
 function GivePrompts() {
   var L1;
@@ -50,19 +51,20 @@ function GivePrompts() {
       symbol = getRandomsymbol,
       //   console.log(password.inputL);
       // console.log(password.Lowercase);
-      console.log(password.uppercase);
+      // console.log(password.uppercase);
       // console.log(password.numerical);
       // console.log(password.symbol);
 
       // console.log(Lowercase());
-      console.log(uppercase());
+      // console.log(uppercase());
       // console.log(numerical());
       // console.log(symbol());
 
-
+      //calls to generate password
       generatePassword(password.Lowercase, password.uppercase, password.numerical, password.symbol, password.inputL);
   }
 }
+//Generateas password
 function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
   // console.log(Lowercase)
   // console.log(password.Lowercase)
@@ -92,8 +94,6 @@ function generatePassword(Lowercase, uppercase, numerical, symbol, inputL) {
   window.alert(finalPassword);
   return finalPassword;
 }
-
-// document.getElementById("Your Secure Password").innerHTML = finalPassword;
 
 //generates a  random number between 0 and 1 then multiples by 26 then rounds down and finally adds 97 to access lower case letters
 function getRandomlower() {
