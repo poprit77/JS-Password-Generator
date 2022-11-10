@@ -23,15 +23,15 @@ var inputL;
 //opens upon clicking genrerate password. runs through prompts for length and confirms for variables
 
 function GivePrompts() {
-  var L1;
-  password.inputL = prompt("Enter a value between 8-128")
+ 
+  password.inputL = prompt("Enter a value between 8-128");
   while (password.inputL < 8 || password.inputL > 128 || isNaN(password.inputL)) {
     if (isNaN(password.inputL)) {
       alert("this is NAN");
-      password.inputL = prompt("Enter a value between 8-128")
+      password.inputL = prompt("Enter a value between 8-128");
     } else if (password.inputL < 8 || password.inputL > 128) {
       alert("please enter a value between 8-128");
-      password.inputL = prompt("Enter a value between 8-128")
+      password.inputL = prompt("Enter a value between 8-128");
     }
     else {
       return
